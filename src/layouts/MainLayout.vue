@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header class="flex justify-around items-center q-pa-md">
-        <q-toolbar-title class="text-center">
+        <q-toolbar-title class="text-center text-weight-medium text-h4">
           Gerador de Versículo
         </q-toolbar-title>
     </q-header>
@@ -55,11 +55,7 @@ export default defineComponent({
 <style>
 
 .q-header {
-  background-color: #f95179;
-}
-
-.q-page-container {
-  padding-top: 65px !important;
+  background-color: #006d5b;
 }
 
 </style>

@@ -1,8 +1,8 @@
 <template>
-<q-page class="container flex column flex-center justify-around">
+<q-page class="container flex column flex-center justify-center">
     <q-img class="image" :src="imageUrl" />
-    <h4 class="title q-ma-sm text-center">"{{ itens.text }}"</h4>
-    <h5 class="title q-ma-sm text-center">{{ itens.book }} {{ itens.chapter }}: {{ itens.number }}</h5>
+    <h4 class="title q-mb-sm text-center text-weight-light">"{{ itens.text }}"</h4>
+    <h5 class="title q-mt-md text-center text-weight-regular">{{ bookName }} {{ itens.chapter }}: {{ itens.number }}</h5>
     <q-btn class="button" unelevated rounded label="Gerar Versículo" @click="init(), randomImage()" />
 </q-page>
 </template>
@@ -23,14 +23,13 @@ export default defineComponent({
     setup() {
         const itens = ref([])
         const imageUrl = ref([])
-        const bookName = ref()
+        const bookName = ref("")
         const init = async () => {
             try {
                 const response = await fetch('https://www.abibliadigital.com.br/api/verses/nvi/random')
                 const data = await response.json()
                 itens.value = data
-                bookName = itens.book.name
-                console.log(itens)
+                bookName.value = itens.value.book.name
 
             } catch (error) {
                 console.log(error)
@@ -90,14 +89,16 @@ export default defineComponent({
             itens,
             randomImage,
             imageUrl,
+            bookName
         }
     }
 }, )
 </script>
 
 <style>
-.container {
-    background-color: #f95179;
+
+.container{
+    background-color: #006d5b;
 }
 
 .title {
@@ -116,4 +117,5 @@ export default defineComponent({
     width: 40%;
     height: 100%;
 }
+
 </style>
